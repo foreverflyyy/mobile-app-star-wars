@@ -2,12 +2,12 @@ import React from 'react';
 
 import {Text, View} from 'react-native';
 
-const Navigation = () => {
+const FavouriteScreen = () => {
     return (
         <Text>
-            Navigation
+            FavouriteScreen
         </Text>
     );
 };
 
-export default Navigation;
+export default FavouriteScreen;
