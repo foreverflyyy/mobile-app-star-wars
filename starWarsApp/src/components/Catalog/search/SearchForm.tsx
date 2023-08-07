@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Text, View} from 'react-native';
-import MyInput from "./UI/input/MyInput";
+import MyInput from "../../UI/MyInput";
 
 interface Props {
     query: string,
@@ -12,7 +12,7 @@ const SearchForm = ({query, setQuery}: Props) => {
 
     return (
         <View>
-            <Text>Search item:</Text>
+            <Text style={{fontSize: 22, paddingTop: 10, paddingHorizontal: 10}}>Search item:</Text>
             <MyInput
                 value={query}
                 onChangeText={text => setQuery(text)}

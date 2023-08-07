@@ -1,7 +1,7 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {Character} from "../../../models/Character";
-import {styles} from "./item.style";
+import HeartIcon from "./assets/HeartIcon";
 
 interface Props {
     character: Character
@@ -10,8 +10,8 @@ interface Props {
 const Item = ({character}: Props) => {
     return (
         <View style={styles.item}>
-            <Text style={styles.itemTitle}> {character.name} </Text>
             <View style={styles.itemInfo}>
+                <Text style={styles.itemTitle}> {character.name} </Text>
                 <Text>Gender: {character.gender}</Text>
                 <Text>Home world: {character.homeworld}</Text>
                 <View>
@@ -21,8 +21,33 @@ const Item = ({character}: Props) => {
                     )}*/}
                 </View>
             </View>
+            <View style={{paddingRight: 5}}>
+                <HeartIcon/>
+            </View>
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    item: {
+        borderColor: "black",
+        borderWidth: 2,
+        borderRadius: 4,
+        borderStyle: "solid",
+        padding: 5,
+        marginVertical: 7,
+        marginHorizontal: 2,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center"
+    },
+    itemTitle: {
+        fontSize: 18
+    },
+    itemInfo: {
+        marginLeft: 8
+    }
+})
 
 export default Item;

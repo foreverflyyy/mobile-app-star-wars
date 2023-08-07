@@ -1,26 +1,43 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import {ActivityIndicator, Text, View} from 'react-native';
 import {people} from "../../data/people";
 import Item from "./item/Item";
 import {styles} from "./catalog.style";
 import {useSortedCharacters} from "../../hooks/useSortedCharacters";
+import {useGetCatalogQuery} from "../../store/services/catalogApi";
+import SearchForm from "./search/SearchForm";
+import MyLoading from "../UI/MyLoading";
 
-interface Props {
-    query: string
-}
+const Catalog = () => {
 
-const Catalog = ({query}: Props) => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [query, setQuery] = useState("");
 
-    const [itemsList, setItemsList] = useState(people);
+    /*const {
+        data = [],
+        isLoading,
+        error
+    } = useGetCatalogQuery({page: currentPage});*/
 
-    const sortItems = useSortedCharacters(itemsList, query);
+    const isLoading = false;
+
+    const sortItems = useSortedCharacters(people, query);
+
+    if(isLoading)
+        return <MyLoading/>
 
     return (
-        <View style={styles.catalogSection}>
-            <Text style={styles.catalogTitle}> Catalog </Text>
-            {sortItems.map(item =>
-                <Item key={item.name} character={item}/>
-            )}
+        <View>
+            <SearchForm
+                query={query}
+                setQuery={setQuery}
+            />
+            <View style={styles.catalogSection}>
+                <Text style={styles.catalogTitle}> Catalog </Text>
+                {sortItems.map(item =>
+                    <Item key={item.name} character={item}/>
+                )}
+            </View>
         </View>
     );
 };

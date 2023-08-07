@@ -1,22 +1,14 @@
-import React, {useState} from 'react';
-import {View} from 'react-native';
-import SearchForm from "../components/SearchForm";
+import React from 'react';
+import {ScrollView, View} from 'react-native';
 import Catalog from "../components/Catalog/Catalog";
-import Header from "../components/UI/header/Header";
+import Header from "../components/UI/Header";
 
 const HomeScreen = () => {
-
-    const [query, setQuery] = useState("");
-
     return (
-        <View>
+        <ScrollView>
             <Header titleScreen={"Home"}/>
-            <SearchForm
-                query={query}
-                setQuery={setQuery}
-            />
-            <Catalog query={query}/>
-        </View>
+            <Catalog/>
+        </ScrollView>
     );
 };
 

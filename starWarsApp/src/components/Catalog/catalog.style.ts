@@ -2,7 +2,7 @@ import {StyleSheet} from "react-native";
 
 export const styles = StyleSheet.create({
     catalogSection: {
-        paddingVertical: 15,
+        paddingTop: 12,
         paddingHorizontal: 10
     },
     catalogTitle: {

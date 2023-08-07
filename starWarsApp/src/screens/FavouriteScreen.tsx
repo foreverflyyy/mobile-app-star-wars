@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {NavigationProp, useNavigation} from "@react-navigation/native";
-import Header from "../components/UI/header/Header";
+import Header from "../components/UI/Header";
 
 const FavouriteScreen = () => {
 
