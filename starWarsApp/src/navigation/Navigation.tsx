@@ -10,8 +10,8 @@ const Navigation = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name={"Home"} component={HomeScreen}/>
-                <Stack.Screen name={"Favourite"} component={FavouriteScreen}/>
+                <Stack.Screen name={"Home"} component={HomeScreen} options={{headerShown: false}}/>
+                <Stack.Screen name={"Favourite"} component={FavouriteScreen} options={{headerShown: false}}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

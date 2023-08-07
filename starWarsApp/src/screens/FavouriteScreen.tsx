@@ -1,12 +1,16 @@
 import React from 'react';
-
-import {Text, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
+import {NavigationProp, useNavigation} from "@react-navigation/native";
+import Header from "../components/UI/header/Header";
 
 const FavouriteScreen = () => {
+
+    const navigation: NavigationProp<any> = useNavigation();
+
     return (
-        <Text>
-            FavouriteScreen
-        </Text>
+        <View>
+            <Header titleScreen={"Favourite"}/>
+        </View>
     );
 };
 
