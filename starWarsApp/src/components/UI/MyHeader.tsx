@@ -8,7 +8,7 @@ interface Props {
     titleScreen: string
 }
 
-const Header = ({titleScreen}: Props) => {
+const MyHeader = ({titleScreen}: Props) => {
 
     const navigation: NavigationProp<any> = useNavigation();
 
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Header;
+export default MyHeader;

@@ -1,12 +1,12 @@
 import React from 'react';
 import {ScrollView, View} from 'react-native';
 import Catalog from "../components/Catalog/Catalog";
-import Header from "../components/UI/Header";
+import MyHeader from "../components/UI/MyHeader";
 
 const HomeScreen = () => {
     return (
         <ScrollView>
-            <Header titleScreen={"Home"}/>
+            <MyHeader titleScreen={"Home"}/>
             <Catalog/>
         </ScrollView>
     );

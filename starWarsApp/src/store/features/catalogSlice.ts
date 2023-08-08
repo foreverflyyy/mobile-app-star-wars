@@ -38,4 +38,4 @@ export const {
     setPage
 } = catalogSlice.actions;
 
-export const selectFavourite = (state: RootState) => state.catalog;
+export const selectCatalog = (state: RootState) => state.catalog;

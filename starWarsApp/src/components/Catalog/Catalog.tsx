@@ -7,17 +7,14 @@ import {useSortedCharacters} from "../../hooks/useSortedCharacters";
 import {useGetCatalogQuery} from "../../store/services/catalogApi";
 import SearchForm from "./search/SearchForm";
 import MyLoading from "../UI/MyLoading";
+import {useSelector} from "react-redux";
+import {selectCatalog} from "../../store/features/catalogSlice";
+import MyPagination from "../UI/MyPagination";
 
 const Catalog = () => {
 
-    const [currentPage, setCurrentPage] = useState(1);
     const [query, setQuery] = useState("");
-
-    /*const {
-        data = [],
-        isLoading,
-        error
-    } = useGetCatalogQuery({page: currentPage});*/
+    const {page} = useSelector(selectCatalog);
 
     const isLoading = false;
 
@@ -38,6 +35,7 @@ const Catalog = () => {
                     <Item key={item.name} character={item}/>
                 )}
             </View>
+            <MyPagination/>
         </View>
     );
 };
