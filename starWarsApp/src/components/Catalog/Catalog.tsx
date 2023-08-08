@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {ActivityIndicator, Text, View} from 'react-native';
-import {people} from "../../data/people";
+import {Text, View} from 'react-native';
 import Item from "./item/Item";
 import {styles} from "./catalog.style";
 import {useSortedCharacters} from "../../hooks/useSortedCharacters";
@@ -14,7 +13,6 @@ import MyPagination from "../UI/MyPagination";
 const Catalog = () => {
 
     const [query, setQuery] = useState("");
-
     const {page} = useSelector(selectCatalog);
 
     const {

@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
         borderColor: "gray",
         borderRadius: 5,
         backgroundColor: "#243759",
-        paddingVertical: 7,
-        paddingHorizontal: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 13,
         marginHorizontal: 2
     },
     btnActive: {
@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
         borderColor: "gray",
         borderRadius: 5,
         backgroundColor: "white",
-        paddingVertical: 7,
-        paddingHorizontal: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 13,
         marginHorizontal: 2
     },
 })
