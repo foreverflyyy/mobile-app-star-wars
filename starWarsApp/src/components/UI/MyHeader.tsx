@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     headerSection: {
         height: 60,
         width: "100%",
-        backgroundColor: "dimgray",
+        backgroundColor: "#243759",
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",

@@ -1,6 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "../index";
 import {Character} from "../../models/Character";
+import {catalogApi} from "../services/catalogApi";
 
 interface State {
     catalog: Character[],

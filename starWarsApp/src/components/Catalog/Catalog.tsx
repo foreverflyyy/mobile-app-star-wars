@@ -14,11 +14,16 @@ import MyPagination from "../UI/MyPagination";
 const Catalog = () => {
 
     const [query, setQuery] = useState("");
+
     const {page} = useSelector(selectCatalog);
 
-    const isLoading = false;
+    const {
+        data = [],
+        isLoading,
+        error
+    } = useGetCatalogQuery({page});
 
-    const sortItems = useSortedCharacters(people, query);
+    const sortItems = useSortedCharacters(data, query);
 
     if(isLoading)
         return <MyLoading/>
