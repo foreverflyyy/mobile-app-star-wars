@@ -1,44 +1,15 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
-import Item from "./item/Item";
-import {styles} from "./catalog.style";
-import {useSortedCharacters} from "../../hooks/useSortedCharacters";
-import {useGetCatalogQuery} from "../../store/services/catalogApi";
-import SearchForm from "./search/SearchForm";
-import MyLoading from "../UI/MyLoading";
-import {useSelector} from "react-redux";
-import {selectCatalog} from "../../store/features/catalogSlice";
-import MyPagination from "../UI/MyPagination";
+import {View} from 'react-native';
+import SearchForm from "./SearchForm";
+import CatalogList from "./CatalogList";
+import CatalogSelect from "./CatalogSelect";
 
 const Catalog = () => {
-
-    const [query, setQuery] = useState("");
-    const {page} = useSelector(selectCatalog);
-
-    const {
-        data = [],
-        isLoading,
-        error
-    } = useGetCatalogQuery({page});
-
-    const sortItems = useSortedCharacters(data, query);
-
-    if(isLoading)
-        return <MyLoading/>
-
     return (
         <View>
-            <SearchForm
-                query={query}
-                setQuery={setQuery}
-            />
-            <View style={styles.catalogSection}>
-                <Text style={styles.catalogTitle}> Catalog </Text>
-                {sortItems.map(item =>
-                    <Item key={item.name} character={item}/>
-                )}
-            </View>
-            <MyPagination/>
+            <SearchForm/>
+            <CatalogSelect/>
+            <CatalogList/>
         </View>
     );
 };

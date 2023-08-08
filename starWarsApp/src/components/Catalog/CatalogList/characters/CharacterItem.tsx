@@ -1,13 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Character} from "../../../models/Character";
-import HeartIcon from "./assets/HeartIcon";
+import {Character} from "../../../../models/interfaces/Character";
+import HeartIcon from "../assets/HeartIcon";
 
 interface Props {
     character: Character
 }
 
-const Item = ({character}: Props) => {
+const CharacterItem = ({character}: Props) => {
     return (
         <View style={styles.item}>
             <View style={styles.itemInfo}>
@@ -16,7 +16,7 @@ const Item = ({character}: Props) => {
                 <Text>Home world: {character.homeworld}</Text>
                 <View>
                     <Text>List films: </Text>
-                    {/*{character?.films.map(film =>
+                    {/*{character?.films.ts.map(film =>
                         <Text>{film}</Text>
                     )}*/}
                 </View>
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Item;
+export default CharacterItem;

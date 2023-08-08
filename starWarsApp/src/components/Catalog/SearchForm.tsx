@@ -1,21 +1,20 @@
 import React from 'react';
-
 import {Text, View} from 'react-native';
-import MyInput from "../../UI/MyInput";
+import MyInput from "../UI/MyInput";
+import {useDispatch, useSelector} from "react-redux";
+import {selectCatalog, setQuery} from "../../store/features/catalogSlice";
 
-interface Props {
-    query: string,
-    setQuery: (value: string) => void;
-}
+const SearchForm = () => {
 
-const SearchForm = ({query, setQuery}: Props) => {
+    const {query} = useSelector(selectCatalog);
+    const dispatch = useDispatch();
 
     return (
         <View>
             <Text style={{fontSize: 22, paddingTop: 10, paddingHorizontal: 10}}>Search item:</Text>
             <MyInput
                 value={query}
-                onChangeText={text => setQuery(text)}
+                onChangeText={text => dispatch(setQuery(text))}
                 placeholder={"Enter for search..."}
             />
         </View>

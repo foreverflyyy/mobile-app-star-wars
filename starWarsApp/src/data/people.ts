@@ -1,4 +1,4 @@
-import {Character} from "../models/Character";
+import {Character} from "../models/interfaces/Character";
 
 export const people: Character[] = [
     {

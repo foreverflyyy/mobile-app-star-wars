@@ -10,8 +10,6 @@ const SinglePage = ({page}: { page: number }) => {
     const {page: currentPage} = useSelector(selectCatalog);
     const dispatch = useDispatch();
 
-    const [isPress, setIsPress] = useState(false);
-
     const touchProps = {
         activeOpacity: 1,
         underlayColor: 'gray',
