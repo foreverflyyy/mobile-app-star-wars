@@ -1,4 +1,4 @@
 export const headerLinks = [
-    "Home",
+    "Catalog",
     "Favourite"
 ]

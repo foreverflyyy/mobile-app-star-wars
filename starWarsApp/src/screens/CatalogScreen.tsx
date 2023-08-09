@@ -3,7 +3,7 @@ import {ScrollView} from 'react-native';
 import Catalog from "../components/Catalog/Catalog";
 import MyHeader from "../components/UI/MyHeader";
 
-const HomeScreen = () => {
+const CatalogScreen = () => {
     return (
         <ScrollView>
             <MyHeader titleScreen={"Home"}/>
@@ -12,4 +12,4 @@ const HomeScreen = () => {
     );
 };
 
-export default HomeScreen;
+export default CatalogScreen;

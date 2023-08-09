@@ -1,53 +1,51 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, TouchableHighlight, View} from 'react-native';
 import {Character} from "../../../../models/interfaces/Character";
 import HeartIcon from "../assets/HeartIcon";
+import HeartEmptyIcon from "../assets/HeartEmptyIcon";
+import {useDispatch, useSelector} from "react-redux";
+import {styles} from "../styles/styles";
+import {addFavourite, removeFavourite, selectFavourite} from "../../../../store/features/favouriteSlice";
 
 interface Props {
     character: Character
 }
 
 const CharacterItem = ({character}: Props) => {
+
+    const {favourites} = useSelector(selectFavourite);
+    const isFavourite = favourites.includes(character);
+
+    const dispatch = useDispatch();
+
+    const handlerChangeFavourite = () => {
+        if(isFavourite)
+            dispatch(removeFavourite(character));
+        else
+            dispatch(addFavourite(character));
+    }
+
     return (
         <View style={styles.item}>
             <View style={styles.itemInfo}>
                 <Text style={styles.itemTitle}> {character.name} </Text>
-                <Text>Gender: {character.gender}</Text>
-                <Text>Home world: {character.homeworld}</Text>
+                <Text style={{color: "#243759"}}>Gender: {character.gender}</Text>
+                <Text style={{color: "#243759"}}>Home world: {character.homeworld}</Text>
                 <View>
-                    <Text>List films: </Text>
+                    <Text style={{color: "#243759"}}>List films: </Text>
                     {/*{character?.films.ts.map(film =>
                         <Text>{film}</Text>
                     )}*/}
                 </View>
             </View>
-            <View style={{paddingRight: 5}}>
-                <HeartIcon/>
-            </View>
+            <TouchableHighlight
+                style={{paddingRight: 5}}
+                onPress={handlerChangeFavourite}
+            >
+                {isFavourite ? <HeartIcon/> : <HeartEmptyIcon/>}
+            </TouchableHighlight>
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    item: {
-        borderColor: "black",
-        borderWidth: 2,
-        borderRadius: 4,
-        borderStyle: "solid",
-        padding: 5,
-        marginVertical: 7,
-        marginHorizontal: 2,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center"
-    },
-    itemTitle: {
-        fontSize: 18
-    },
-    itemInfo: {
-        marginLeft: 8
-    }
-})
 
 export default CharacterItem;

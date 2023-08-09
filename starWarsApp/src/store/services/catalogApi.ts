@@ -1,7 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {Character} from "../../models/interfaces/Character";
-import {Film} from "../../models/interfaces/Film";
-import {Starship} from "../../models/interfaces/Starship";
+import {Response} from "../../models/interfaces/Response";
 
 export const catalogApi = createApi({
     reducerPath: 'catalogApi',
@@ -9,27 +7,27 @@ export const catalogApi = createApi({
         baseUrl: 'https://swapi.dev/api/'
     }),
     endpoints: (builder) => ({
-        getCatalog: builder.query<Character[], {page: number}>({
-            query: ({page}) => ({
-                url: `people`,
+        getCharactersByQuery: builder.query<Response, { query: string, page: number }>({
+            query: ({query, page}) => ({
+                url: 'people',
                 method: 'GET',
                 params: {
+                    search: query,
                     page
-                },
+                }
             }),
-            transformResponse: (response: any) => response.results,
         }),
-        getStarships: builder.query<Starship[], {page: number}>({
-            query: ({page}) => ({
-                url: `starships`,
+        getStarshipsByQuery: builder.query<Response, { query: string, page: number }>({
+            query: ({query, page}) => ({
+                url: 'starships',
                 method: 'GET',
                 params: {
+                    search: query,
                     page
-                },
+                }
             }),
-            transformResponse: (response: any) => response.results,
         }),
-        getFilms: builder.query<Film[], null>({
+        getFilms: builder.query<Response, null>({
             query: () => ({
                 url: `films`,
                 method: 'GET',
@@ -40,7 +38,7 @@ export const catalogApi = createApi({
 });
 
 export const {
-    useGetCatalogQuery,
-    useGetStarshipsQuery,
+    useGetCharactersByQueryQuery,
+    useGetStarshipsByQueryQuery,
     useGetFilmsQuery
 } = catalogApi;

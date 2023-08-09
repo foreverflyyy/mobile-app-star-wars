@@ -13,12 +13,13 @@ const CatalogSelect = () => {
 
     return (
         <Picker
+            style={{ width: 180 }}
             selectedValue={typeCatalog}
             onValueChange={(itemValue, itemIndex) =>
                 dispatch(setTypeCatalog(itemValue))
             }>
             {values.map(value => (
-                <Picker.Item key={value} label="value" value="value" />
+                <Picker.Item key={value} color={"#243759"} style={{fontSize: 20}} label={value} value={value}/>
             ))}
         </Picker>
     );

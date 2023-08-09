@@ -1,9 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from "react-redux";
 import {selectCatalog, setPage} from "../../store/features/catalogSlice";
+import {CountingPages} from "../../helpers/CountingPages";
 
-const pages = [1, 2, 3, 4, 5];
+const MyPagination = ({allItems}: {allItems: number}) => {
+
+    const resultPages = CountingPages(allItems);
+    const arrayPages = new Array(resultPages).fill(null).map((_, i) => i + 1);
+
+    return (
+        <View style={styles.sectionPagination}>
+            {arrayPages.map(page => (
+                <SinglePage key={page} page={page}/>
+            ))}
+        </View>
+    );
+};
 
 const SinglePage = ({page}: { page: number }) => {
 
@@ -28,16 +41,6 @@ const SinglePage = ({page}: { page: number }) => {
         </TouchableHighlight>
     )
 }
-
-const MyPagination = () => {
-    return (
-        <View style={styles.sectionPagination}>
-            {pages.map(page => (
-                <SinglePage key={page} page={page}/>
-            ))}
-        </View>
-    );
-};
 
 const styles = StyleSheet.create({
     sectionPagination: {
